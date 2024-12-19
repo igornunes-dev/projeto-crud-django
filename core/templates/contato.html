@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+
+    <h1>Contato</h1>
+    {% bootstrap_messages %}
+
+    <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+    </form>
+
+{% endblock %}

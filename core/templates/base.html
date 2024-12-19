@@ -1,0 +1,29 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Minha Aplicação{% endblock %}</title>
+  {% bootstrap_css %}
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center gap-5">
+
+      <a class="navbar-brand" href="{% url 'index' %}">Produto</a>
+      <a class="navbar-brand" href="{% url 'produto' %}">Cadastrar Produto</a>
+      <a class="navbar-brand" href="{% url 'contato' %}">Contato</a>
+
+  </nav>
+
+  <main class="container mt-5">
+      {% block content %} 
+      {% endblock %}
+  </main>
+  
+
+  {% bootstrap_javascript %}
+</body>
+</html>

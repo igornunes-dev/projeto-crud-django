@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}Cadastro de produto{% endblock %}
+{% block content %}
+
+    <h1>Produto</h1>
+    {% bootstrap_messages%}
+
+    <form action="{% url 'produto' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {% bootstrap_form form%}
+
+      <button type="submit" class="btn btn-primary">Cadastrar produto</button>
+    </form>
+  </div> 
+
+  {% bootstrap_javascript %}
+  {% endblock %}

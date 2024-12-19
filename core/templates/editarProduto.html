@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}Editar Produto{% endblock %}
+{% block content %}
+    <h1>Edição de Produto</h1>
+
+    <form action="{% url 'editarProduto' produto.id %}" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+  
+      <div class="d-flex justify-content-between">
+          <button type="submit" name="edit" value="true" class="btn btn-primary">Editar</button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+              Deletar
+          </button>
+      </div>
+  </form>
+  
+  <!-- Modal de Confirmação -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body">
+                  Tem certeza de que deseja excluir o produto <strong>{{ produto.nome }}</strong>?
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <!-- Formulário para exclusão -->
+                  <form action="{% url 'editarProduto' produto.id %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" name="delete" value="true" class="btn btn-danger">Deletar</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+
+  {% bootstrap_javascript %}
+
+{% endblock %}
