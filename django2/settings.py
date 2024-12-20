@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os   
 import dj_database_url
+import django_heroku
 #Usando PostgreSQL com Heroku
 DATABASES = {
   'default': dj_database_url.config()
@@ -155,4 +156,4 @@ EMAIL_USER_TSL = True
 EMAIL_HOST_PASSWORD = ''
 """
 
-
+django_heroku.settings(locals())
