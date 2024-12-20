@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
+    {% if produtos %}
     <h1>Produtos</h1>
 
     <table class="table table-bordered">
@@ -53,6 +54,11 @@
         {% endfor %}
       </tbody>
     </table>
+
+    {% else %}
+      <h2>Ainda não existe produtos cadastrados</h2>
+
+    {% endif %}
 
 
   {% bootstrap_javascript %}
